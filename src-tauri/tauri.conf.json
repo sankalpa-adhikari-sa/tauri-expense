@@ -17,6 +17,12 @@
         "open": true
       }
     },
+    "updater": {
+      "active": true,
+      "endpoints": ["https://github.com"],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDg3REFGMTBDOTMzQTc5Q0EKUldUS2VUcVREUEhhaDgrcFYrc0JUaUlQbWNySm9idml1QlF6MTI5TXQ4TElmc0ZuaUYvamRYaGQK"
+    },
     "windows": [
       {
         "title": "expense",
