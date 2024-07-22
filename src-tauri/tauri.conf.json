@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "expense",
-    "version": "2.0.0"
+    "version": "../package.json"
   },
   "tauri": {
     "allowlist": {
@@ -20,7 +20,7 @@
     "updater": {
       "active": true,
       "endpoints": [
-        "https://github.com/sankalpa-adhikari-sa/tauri-expense/releases/download/v2.0.0/latest.json"
+        "https://gist.github.com/sankalpa-adhikari-sa/0a1a0696af940870b62161b085c297c3"
       ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDRCQkY2MTRCQTIwNDAzNDAKUldSQUF3U2lTMkcvUzBHOFZoSXdyVks4UVlpY1lFTllGN1JqV3Z4ZUpOeE12TjAwRUpsa2xWbGYK"
