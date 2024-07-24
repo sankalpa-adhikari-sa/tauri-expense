@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import reactLogo from "@/assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
@@ -17,7 +17,7 @@ function Index() {
   }
   return (
     <div className="container">
-      <h1>Welcome to Tauri Dev!</h1>
+      <h1>Welcome to Tauri Dev! v2.0.0</h1>
 
       <div className="row">
         <a href="https://vitejs.dev" target="_blank">
@@ -30,6 +30,7 @@ function Index() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <Link to="/dashboard">Dashboard</Link>
 
       <p>Click on the Tauri, Vite, and React logos to learn more.</p>
 

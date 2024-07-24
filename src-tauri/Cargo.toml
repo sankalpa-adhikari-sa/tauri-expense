@@ -1,7 +1,7 @@
 [package]
 name = "expense"
-version = "0.0.0"
-description = "A Tauri App"
+version = "2.0.1"
+description = "Manage and Track your Income and Expenses"
 authors = ["you"]
 edition = "2021"
 

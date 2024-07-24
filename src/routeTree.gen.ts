@@ -13,7 +13,9 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PrivateImport } from './routes/_private'
 import { Route as IndexImport } from './routes/index'
+import { Route as PrivateDashboardImport } from './routes/_private/dashboard'
 
 // Create Virtual Routes
 
@@ -26,9 +28,19 @@ const AboutLazyRoute = AboutLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
+const PrivateRoute = PrivateImport.update({
+  id: '/_private',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const PrivateDashboardRoute = PrivateDashboardImport.update({
+  path: '/dashboard',
+  getParentRoute: () => PrivateRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -42,6 +54,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/_private': {
+      id: '/_private'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PrivateImport
+      parentRoute: typeof rootRoute
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -49,12 +68,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
+    '/_private/dashboard': {
+      id: '/_private/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof PrivateDashboardImport
+      parentRoute: typeof PrivateImport
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexRoute, AboutLazyRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  PrivateRoute: PrivateRoute.addChildren({ PrivateDashboardRoute }),
+  AboutLazyRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -65,14 +95,25 @@ export const routeTree = rootRoute.addChildren({ IndexRoute, AboutLazyRoute })
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/_private",
         "/about"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/_private": {
+      "filePath": "_private.tsx",
+      "children": [
+        "/_private/dashboard"
+      ]
+    },
     "/about": {
       "filePath": "about.lazy.tsx"
+    },
+    "/_private/dashboard": {
+      "filePath": "_private/dashboard.tsx",
+      "parent": "/_private"
     }
   }
 }

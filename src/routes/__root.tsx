@@ -5,7 +5,7 @@ export const Route = createRootRoute({
   component: () => (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Outlet />
-      <TanStackRouterDevtools />
+      <TanStackRouterDevtools position="top-right" />
     </ThemeProvider>
   ),
 });
